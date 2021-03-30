@@ -1,3 +1,7 @@
+import hashlib
+bigNum = 104729
+
+
 class User:
     def __init__(self, userid):
         self.userid = userid
@@ -14,14 +18,15 @@ class User:
                 print("That userID is not 4 characters./n")
         print("---")
         while True:
-            newpass = hash(input("Please enter a new secure password: "))
-            confirmpass = hash(input("Please re-enter your secure password: "))
+            newpass = hashlib.sha512(input("Please enter a new secure password: "))
+            confirmpass = hashlib.sha512(input("Please re-enter your secure password: "))
             if newpass == confirmpass:
                 file.write(str(newpass)+"/n")
                 break
             else:
                 print("That password does not match./n")
         print("---")
+
 
 
 firstTime = False
