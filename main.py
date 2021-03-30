@@ -26,7 +26,7 @@ class User:
                 file.write(str(newpass))
                 break
             else:
-                print("That password does not match./n")
+                print("That password does not match.")
         print("---")
 
 
