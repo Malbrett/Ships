@@ -45,14 +45,14 @@ class User:
 
         prv = open(f"{new_name}_private.pem", "w")
         prv.write(private_key_str)
-        #print('Private key = ')
-        #print(private_key_str)
+        # print('Private key = ')
+        # print(private_key_str)
         prv.close()
 
         pub = open(f"{new_name}.pem", "w")
         pub.write(public_key_str)
-        #print('Public key = ')
-        #print(public_key_str)
+        # print('Public key = ')
+        # print(public_key_str)
         pub.close()
 
 
@@ -69,5 +69,5 @@ finally:
         User.new_user(user)
         user = open('userInfo')
 
-username = user.readline(1)
+username = user.readline(4)
 print(f"Welcome {username}")
