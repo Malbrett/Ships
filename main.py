@@ -1,4 +1,6 @@
+import re
 import hashlib
+import crypt
 bigNum = 104729
 
 
@@ -11,11 +13,11 @@ class User:
         while True:
             newname = input("Please enter a 4 character userID: ")
             newname.lower()
-            if len(newname) == 4:
-                file.write(newname)
+            if re.match(r"\D\D\D\D", newname):
+                file.write(newname+"\n")
                 break
             else:
-                print("That userID is not 4 characters.")
+                print("That userID is invalid.")
         print("---")
         while True:
             newpass = hashlib.sha256(input("Please enter a new secure password: ").encode()).hexdigest()
@@ -23,7 +25,7 @@ class User:
             confirmpass = hashlib.sha256(input("Please re-enter your secure password: ").encode()).hexdigest()
             print(confirmpass)
             if newpass == confirmpass:
-                file.write(str(newpass))
+                file.write(str(newpass)+"\n")
                 break
             else:
                 print("That password does not match.")
@@ -42,6 +44,7 @@ finally:
     if firstTime:
         user = open("userInfo", "a")
         User.newUser(user)
+        user = open('userInfo')
 
 username = user.readline(1)
 print(f"Welcome {username}")
